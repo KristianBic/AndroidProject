@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.example.android.navigation.databinding.ActivityMainBinding
+import com.example.android.navigation.databinding.FragmentMainBinding
 
 class Main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class Main : AppCompatActivity() {
         supportActionBar?.hide()
 
         //pridanie moznosti binding pre aplikaciu
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<FragmentMainBinding>(this, R.layout.fragment_main)
 
         //pridanie navigation bar pre aplikaciu
         val navController = this.findNavController(R.id.myNavHostFragment)

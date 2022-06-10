@@ -7,7 +7,7 @@ import android.widget.CheckBox
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.android.navigation.databinding.FragmentGameBinding
+import com.example.android.navigation.databinding.FragmentIntroductionSelectionBinding
 
 /**
  * Fragment sa zobrazi iba pri prvom spusteni aplikacie.
@@ -24,7 +24,7 @@ class IntroductionSelectionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         //Inicializacia bindingu
-        val binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater, R.layout.fragment_game, container, false)
+        val binding = DataBindingUtil.inflate<FragmentIntroductionSelectionBinding>(inflater, R.layout.fragment_introduction_selection, container, false)
 
         meditation = binding.firstAnswerRadioButton
         training = binding.secondAnswerRadioButton
@@ -46,7 +46,7 @@ class IntroductionSelectionFragment : Fragment() {
             if (sleep.isChecked) {
                 theList.add("sleep")
             }
-            view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+            view.findNavController().navigate(R.id.action_introductionSelectionFragment_to_homeFragment)
         }
         return binding.root
     }

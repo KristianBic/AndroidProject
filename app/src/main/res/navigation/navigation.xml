@@ -3,62 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/titleFragment">
+    app:startDestination="@id/introductionWelcomeFragment">
 
     <fragment
-        android:id="@+id/titleFragment"
+        android:id="@+id/introductionWelcomeFragment"
         android:name="com.example.android.navigation.IntroductionWelcomeFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_title" >
+        tools:layout="@layout/fragment_introduction_welcome" >
         <action
-            android:id="@+id/action_titleFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/action_introductionWelcomeFragment_to_introductionSelectionFragment"
+            app:destination="@id/introductionSelectionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
+        android:id="@+id/introductionSelectionFragment"
         android:name="com.example.android.navigation.IntroductionSelectionFragment"
         android:label="GameFragment"
-        tools:layout="@layout/fragment_game" >
+        tools:layout="@layout/fragment_introduction_selection" >
         <action
-            android:id="@+id/action_gameFragment_to_gameWonFragment"
-            app:destination="@id/gameWonFragment"
-            app:popUpTo="@id/gameFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_introductionSelectionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameOverFragment"
+        android:id="@+id/statisticsFragment"
         android:name="com.example.android.navigation.StatisticsFragment"
         android:label="fragment_game_over"
-        tools:layout="@layout/fragment_game_over" >
+        tools:layout="@layout/fragment_statistics" >
         <action
-            android:id="@+id/action_gameOverFragment_to_gameWonFragment"
-            app:destination="@id/gameWonFragment" />
+            android:id="@+id/action_statisticsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_gameOverFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            android:id="@+id/action_statisticsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameWonFragment"
+        android:id="@+id/homeFragment"
         android:name="com.example.android.navigation.HomeFragment"
         android:label="fragment_game_won"
-        tools:layout="@layout/fragment_game_won" >
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_gameWonFragment_to_gameOverFragment"
-            app:destination="@id/gameOverFragment" />
+            android:id="@+id/action_homeFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
         <action
-            android:id="@+id/action_gameWonFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/aboutFragment"
+        android:id="@+id/settingsFragment"
         android:name="com.example.android.navigation.SettingsFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" >
+        tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_aboutFragment_to_gameOverFragment"
-            app:destination="@id/gameOverFragment" />
+            android:id="@+id/action_settingsFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
         <action
-            android:id="@+id/action_aboutFragment_to_gameWonFragment"
-            app:destination="@id/gameWonFragment" />
+            android:id="@+id/action_settingsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

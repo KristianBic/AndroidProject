@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2018, The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="16dp"
+            android:layout_height="3dp"
+            android:layout_marginEnd="20dp"
+            android:background="#EEEEEE"
+            android:hapticFeedbackEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="16dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="20dp"
+            android:background="#EEEEEE"
+            app:layout_constraintStart_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="16dp"
+            android:layout_height="2dp"
+            android:background="#E1AF4C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="What are you trying to improve?"
+            android:textColor="#AA802C"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/questionRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <CheckBox
+                android:id="@+id/firstAnswerRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="@dimen/question_vertical_margin"
+                android:background="@drawable/round_corner"
+                android:drawableLeft="@drawable/meditation"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:layoutDirection="rtl"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Meditation"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/answer_text_size"
+                tools:text="Meditation" />
+
+            <CheckBox
+                android:id="@+id/secondAnswerRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="@dimen/question_vertical_margin"
+                android:background="@drawable/round_corner"
+                android:drawableLeft="@drawable/training"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:layoutDirection="rtl"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Training"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/answer_text_size"
+                tools:text="Training" />
+
+            <CheckBox
+                android:id="@+id/thirdAnswerRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="@dimen/question_vertical_margin"
+                android:background="@drawable/round_corner"
+                android:drawableLeft="@drawable/walking"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:layoutDirection="rtl"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Walking"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/answer_text_size"
+                tools:text="Walking" />
+
+            <CheckBox
+                android:id="@+id/fourthAnswerRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/round_corner"
+                android:drawableLeft="@drawable/sleep"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:layoutDirection="rtl"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Sleep"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/answer_text_size"
+                tools:text="Sleep" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-light"
+            android:text="NOTE: You will be able to add more tasks in your account settings. "
+            android:textAlignment="center"
+
+            android:textColor="#868686"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/questionRadioGroup" />
+
+        <Button
+            android:id="@+id/welcomeImproveNext"
+            android:layout_width="272dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#FFFFFF"
+            android:text="NEXT"
+            android:textColor="#868686"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
