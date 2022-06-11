@@ -1,21 +1,26 @@
 package com.example.android.navigation.database
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface AppDatabaseDao {
 
-    @Insert
-    suspend fun insert(tasks: Tasks)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun addTask(tasks: Tasks)
 
+    @Query("SELECT * from tasks_table ORDER BY taskId ASC")
+    fun readAllData(): LiveData<List<Tasks>>
+
+    /*
     @Update
-    suspend  fun update(tasks: Tasks)
+      fun updateTask(tasks: Tasks)
 
     @Query("SELECT * from tasks_table WHERE taskId = :key")
-    suspend fun get(key: Long): Tasks?
+     fun getValue(key: Long): Tasks?
 
     @Query("DELETE FROM tasks_table")
-    suspend fun clear()
+     fun clear()
+
+     */
+
 }
