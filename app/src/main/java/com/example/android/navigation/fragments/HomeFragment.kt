@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.navigation.R
-import com.example.android.navigation.database.TasksViewModel
+import com.example.android.navigation.database.viewmodel.TasksViewModel
 import com.example.android.navigation.databinding.FragmentHomeBinding
-import com.example.android.navigation.list.ListAdapter
+import com.example.android.navigation.fragments.list.ListAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,11 +32,13 @@ class HomeFragment : Fragment() {
         //zmena formatu datumu na dd.mmmm.yyyy - napr. 10 júna 2022 pre obj. TasksDate
         binding.TasksDate.text = SimpleDateFormat("dd MMMM yyyy").format(Date())
 
+        //recyclerView
         val adapter = ListAdapter()
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        //Inicializacia taskViewModelu
         mTasksViewModel = ViewModelProvider(this).get(TasksViewModel::class.java)
         mTasksViewModel.readAllData.observe(viewLifecycleOwner, androidx.lifecycle.Observer { task ->
             adapter.setData(task)

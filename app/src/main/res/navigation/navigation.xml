@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/introductionWelcomeFragment"
         android:name="com.example.android.navigation.fragments.IntroductionWelcomeFragment"
-        android:label="@string/app_name"
+        android:label="WelcomeFragment"
         tools:layout="@layout/fragment_introduction_welcome" >
         <action
             android:id="@+id/action_introductionWelcomeFragment_to_introductionSelectionFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/introductionSelectionFragment"
         android:name="com.example.android.navigation.fragments.IntroductionSelectionFragment"
-        android:label="GameFragment"
+        android:label="SelectionFragment"
         tools:layout="@layout/fragment_introduction_selection" >
         <action
             android:id="@+id/action_introductionSelectionFragment_to_homeFragment"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.android.navigation.fragments.StatisticsFragment"
-        android:label="fragment_game_over"
+        android:label="StatisticsFragment"
         tools:layout="@layout/fragment_statistics" >
         <action
             android:id="@+id/action_statisticsFragment_to_homeFragment"
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.android.navigation.fragments.HomeFragment"
-        android:label="fragment_game_won"
+        android:label="HomeFragment"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
@@ -50,7 +50,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.android.navigation.fragments.SettingsFragment"
-        android:label="fragment_about"
+        android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" >
         <action
             android:id="@+id/action_settingsFragment_to_statisticsFragment"
@@ -58,5 +58,42 @@
         <action
             android:id="@+id/action_settingsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsTaskFragment"
+            app:destination="@id/settingsTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateTaskFragment"
+        android:name="com.example.android.navigation.fragments.update.UpdateTaskFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update_task">
+        <action
+            android:id="@+id/action_updateTaskFragment_to_settingsTaskFragment"
+            app:destination="@id/settingsTaskFragment" />
+        <argument
+            android:name="currentTask"
+            app:argType="com.example.android.navigation.database.model.Tasks" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsTaskFragment"
+        android:name="com.example.android.navigation.fragments.SettingsTaskFragment"
+        android:label="SettingsTaskFragment" >
+        <action
+            android:id="@+id/action_settingsTaskFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_settingsTaskFragment_to_updateTaskFragment"
+            app:destination="@id/updateTaskFragment" />
+        <action
+            android:id="@+id/action_settingsTaskFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskFragment"
+        android:name="com.example.android.navigation.fragments.AddTaskFragment"
+        android:label="AddTaskFragment" >
+        <action
+            android:id="@+id/action_addTaskFragment_to_settingsTaskFragment"
+            app:destination="@id/settingsTaskFragment" />
     </fragment>
 </navigation>

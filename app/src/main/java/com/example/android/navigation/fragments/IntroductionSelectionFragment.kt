@@ -9,13 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.android.navigation.R
-import com.example.android.navigation.database.Tasks
-import com.example.android.navigation.database.TasksViewModel
+import com.example.android.navigation.database.model.Tasks
+import com.example.android.navigation.database.viewmodel.TasksViewModel
 import com.example.android.navigation.databinding.FragmentIntroductionSelectionBinding
-
-
 
 /**
  * Fragment sa zobrazi iba pri prvom spusteni aplikacie.
@@ -36,7 +33,9 @@ class IntroductionSelectionFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentIntroductionSelectionBinding>(inflater,
             R.layout.fragment_introduction_selection, container, false)
 
+        //Inicializacia ViewModelu
         mTasksViewModel = ViewModelProvider(this).get(TasksViewModel::class.java)
+
         meditation = binding.firstAnswerRadioButton
         training = binding.secondAnswerRadioButton
         walking = binding.thirdAnswerRadioButton
@@ -59,13 +58,14 @@ class IntroductionSelectionFragment : Fragment() {
                 theList.add("sleep")
             }
             insertDataToDatabase()
+            view.findNavController().navigate(R.id.action_introductionSelectionFragment_to_homeFragment)
         }
         return binding.root
     }
     private fun insertDataToDatabase() {
+        //pridanie tasku do databazy
         val task = Tasks(0, "sleep", "sleep")
         mTasksViewModel.addTask(task)
         //Toast.makeText(requireContext(), "Successful", Toast.LENGTH_LONG).show()
-        findNavController().navigate(R.id.action_introductionSelectionFragment_to_homeFragment)
     }
 }

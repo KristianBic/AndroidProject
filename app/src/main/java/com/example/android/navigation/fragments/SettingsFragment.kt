@@ -19,6 +19,8 @@ class SettingsFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentSettingsBinding>(inflater,
             R.layout.fragment_settings,container,false)
 
+        binding.settingsTask.setOnClickListener{view : View -> view.findNavController().navigate(R.id.action_settingsFragment_to_settingsTaskFragment)}
+
         //navigacny bar na spodu obrazovky
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {

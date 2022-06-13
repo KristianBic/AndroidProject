@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.android.navigation.databinding.FragmentMainBinding
 
 class Main : AppCompatActivity() {
@@ -24,5 +25,8 @@ class Main : AppCompatActivity() {
         //pridanie navigation bar pre aplikaciu
         val navController = this.findNavController(R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this,navController)
+
+        //netusim co to je mozno to dat prec
+        //setupActionBarWithNavController(findNavController(R.id.homeFragment))
     }
 }

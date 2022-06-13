@@ -3,11 +3,15 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.android.navigation.database.model.Tasks
 
-
+/**
+ * Databaza pre tabulkty: Tasks
+ */
 @Database(entities = [Tasks::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
+    //metoda vracia appDatabaseDao
     abstract fun appDatabaseDao(): AppDatabaseDao
 
     companion object {
@@ -22,7 +26,6 @@ abstract class AppDatabase : RoomDatabase() {
                         AppDatabase::class.java,
                         "tasks_database"
                     )
-                        //.fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
                 }

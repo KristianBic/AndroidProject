@@ -1,13 +1,23 @@
-package com.example.android.navigation.list
-
+package com.example.android.navigation.fragments.list
+import android.text.Layout
+import android.text.Layout.Directions
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.ListFragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.navigation.R
-import com.example.android.navigation.database.Tasks
+import com.example.android.navigation.database.model.Tasks
+import com.example.android.navigation.fragments.HomeFragment
+import com.example.android.navigation.fragments.SettingsTaskFragment
+import com.example.android.navigation.fragments.SettingsTaskFragmentDirections
 import kotlinx.android.synthetic.main.task_row.view.*
 
+/**
+ * RecyclerView adapter
+ * recuclerView mame pridane v layoute fragment_home ... a to upravime
+ */
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     private var taskList = emptyList<Tasks>()
@@ -25,6 +35,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.taskID.text = currentItem.taskId.toString()
         holder.itemView.taskName.text = currentItem.taskName
         holder.itemView.taskTime.text = currentItem.timeType
+        //pre update
+        holder.itemView.rowLayout.setOnClickListener {
+            val action = SettingsTaskFragmentDirections.actionSettingsTaskFragmentToUpdateTaskFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
