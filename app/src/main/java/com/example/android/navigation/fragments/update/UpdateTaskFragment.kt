@@ -1,4 +1,5 @@
 package com.example.android.navigation.fragments.update
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -32,6 +33,9 @@ class UpdateTaskFragment : Fragment() {
         view.update_btn.setOnClickListener {
             updateDataFromDatabase()
         }
+        view.floatingDeleteButton.setOnClickListener {
+            deleteDataFromDatabase()
+        }
         return view
     }
 
@@ -49,5 +53,18 @@ class UpdateTaskFragment : Fragment() {
     }
     private fun inputCheck(taskName : String, taskType : String): Boolean {
         return !(TextUtils.isEmpty(taskName) && TextUtils.isEmpty(taskType))
+    }
+
+    private fun deleteDataFromDatabase() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes"){_,_ ->
+            mTasksViewModel.deleteTask(args.currentTask)
+            Toast.makeText(requireContext(), "Removed: ${args.currentTask.taskName}", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_updateTaskFragment_to_settingsTaskFragment)
+        }
+        builder.setNegativeButton("No"){_,_ -> }
+        builder.setTitle("Delete ${args.currentTask.taskName}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentTask.taskName}?")
+        builder.create().show()
     }
 }

@@ -1,9 +1,11 @@
 package com.example.android.navigation.fragments
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -37,7 +39,22 @@ class SettingsTaskFragment : Fragment() {
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_settingsTaskFragment_to_addTaskFragment)
         }
+        view.floatingDeleteEveryting.setOnClickListener {
+            deleteEveryDataFromDatabase()
+        }
         return view
+    }
+
+    private fun deleteEveryDataFromDatabase() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes"){_,_ ->
+            mTasksViewModel.deleteAllTask()
+            Toast.makeText(requireContext(), "Removed every task", Toast.LENGTH_LONG).show()
+        }
+        builder.setNegativeButton("No"){_,_ -> }
+        builder.setTitle("Are you sure you want to delete everything ?")
+        builder.setMessage("If you press yes you will delete every task ?")
+        builder.create().show()
     }
 
 }

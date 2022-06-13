@@ -19,4 +19,12 @@ class TasksRepository(private val appDatabaseDao : AppDatabaseDao) {
     fun updateTask(tasks: Tasks) {
         appDatabaseDao.updateTask(tasks)
     }
+
+    fun deleteTask(tasks: Tasks) {
+        appDatabaseDao.deleteTask(tasks)
+    }
+
+    fun deleteAllTask() {
+        appDatabaseDao.deleteAllTasks()
+    }
 }
